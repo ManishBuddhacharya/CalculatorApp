@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     float ValueOne, ValueTwo;
     boolean Addition, Subtract, Multiplication, Division;
 
+    Calculator obj = new Calculator();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
                     etResult.setText("");
                 } else {
                     ValueOne = Float.parseFloat(etResult.getText() + "");
+                    obj.setFirst(ValueOne);
                     Addition = true;
                     etResult.setText(null);
                 }
@@ -126,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ValueOne = Float.parseFloat(etResult.getText() + "");
+                obj.setFirst(ValueOne);
                 Subtract = true;
                 etResult.setText(null);
             }
@@ -135,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ValueOne = Float.parseFloat(etResult.getText() + "");
+                obj.setFirst(ValueOne);
                 Multiplication = true;
                 etResult.setText(null);
             }
@@ -144,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ValueOne = Float.parseFloat(etResult.getText() + "");
+                obj.setFirst(ValueOne);
                 Division = true;
                 etResult.setText(null);
             }
@@ -153,24 +158,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ValueTwo = Float.parseFloat(etResult.getText() + "");
+                obj.setSecond(ValueTwo);
 
                 if (Addition == true) {
-                    etResult.setText(ValueOne + ValueTwo + "");
+                    etResult.setText(Float.toString(obj.sum()));
                     Addition = false;
                 }
 
                 if (Subtract == true) {
-                    etResult.setText(ValueOne - ValueTwo + "");
+                    etResult.setText(Float.toString(obj.sub()));
                     Subtract = false;
                 }
 
                 if (Multiplication == true) {
-                    etResult.setText(ValueOne * ValueTwo + "");
+                    etResult.setText(Float.toString(obj.mul()));
                     Multiplication = false;
                 }
 
                 if (Division == true) {
-                    etResult.setText(ValueOne / ValueTwo + "");
+                    etResult.setText(Float.toString(obj.div()));
                     Division = false;
                 }
             }
